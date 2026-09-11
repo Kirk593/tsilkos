@@ -1,0 +1,12 @@
+suggestion note 
+
+how to compose
+
+*name*:*suggestion 
+
+it's pretty easy heres an example
+
+Kirk:add i915 support
+
+there write suggestions here
+
