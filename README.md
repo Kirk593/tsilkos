@@ -5,14 +5,14 @@ to submit to custom kernels contact me on matrix which my matrix is @kirkchase:m
 
 don't steal or I will sue you.
 
-this os is made by 4 people 
+credit
 
-me
+me programming almost everything 
 
-Markus
+Markus *layout designer*
 
-Marco
+Marco *idea maker*
 
-Gerome 
+Gerome *idea maker*
 
 shout-out to them they will help me make this os 
