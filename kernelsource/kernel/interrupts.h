@@ -6,6 +6,7 @@ extern "C" {
 #endif
 
 void idt_init(void);
+void idt_load(void);
 
 #ifdef __cplusplus
 }
