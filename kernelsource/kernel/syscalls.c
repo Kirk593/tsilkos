@@ -1,7 +1,8 @@
-#include "syscalls.h"
-#include "interrupts.h"
-#include "video/fb.h"
 #include <stdint.h>
+#include "interrupts.h"
+#include "syscalls.h"
+
+extern void syscall_interrupt_stub(void);
 
 typedef void (*syscall_fn)(void);
 
