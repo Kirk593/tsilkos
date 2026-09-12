@@ -37,7 +37,8 @@ OBJS = \
 	build/syscalls.o \
 	build/kmalloc.o \
 	build/ata.o \
-	build/ext2.o
+	build/ext2.o \
+ build/syscall_stub.o \
 
 all: kernel.bin
 
@@ -48,6 +49,9 @@ build:
 	mkdir -p build
 
 build/kernel_entry.o: arch/x86/boot/kernel.s | build
+	$(AS) $(NASMFLAGS) $< -o $@
+
+build/syscall_stub.o: arch/x86/boot/syscall_stub.s | build
 	$(AS) $(NASMFLAGS) $< -o $@
 
 build/main.o: kernel/main.c kernel/bootstrap.h | build
