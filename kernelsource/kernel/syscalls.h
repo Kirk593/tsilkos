@@ -1,7 +1,14 @@
-#ifndef SYSCALL_H
-#define SYSCALL_H
+#ifndef SYSCALLS_H
+#define SYSCALLS_H
 
-void syscall_handler();
-void idt_init();
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void syscalls_init(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
