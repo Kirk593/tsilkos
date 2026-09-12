@@ -4,10 +4,6 @@ extern "C" {
 #include "interrupts.h"
 }
 
-#include "bootstrap.h"
-
-/* Keep bootstrap implementation private to this translation unit, similar
- * to the pattern used by larger kernels such as XNU. */
 static void bootstrapInterrupts(void);
 static void bootstrapSyscalls(void);
 static void bootstrapMemory(void);
@@ -27,8 +23,7 @@ extern "C" void kernel_bootstrap(void)
 
 static void bootstrapMemory(void)
 {
-    /* kmalloc currently uses a statically reserved heap, so it requires
-     * no runtime initialization yet. */
+    /* kmalloc currently uses a statically reserved heap. */
 }
 
 static void bootstrapInterrupts(void)
@@ -48,5 +43,5 @@ static void bootstrapDevices(void)
 
 static void bootstrapFilesystem(void)
 {
-    /* Filesystems should be mounted only after a block device is found. */
+    /* Mount filesystems only after a block device is discovered. */
 }
