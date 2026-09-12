@@ -1,9 +1,14 @@
 #ifndef INTERRUPTS_H
 #define INTERRUPTS_H
 
-#include <stdint.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-void idt_set_entry(int num, uint32_t handler);
-void idt_load();
+void idt_init(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
