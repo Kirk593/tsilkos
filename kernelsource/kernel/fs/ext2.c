@@ -1,3 +1,5 @@
+#include <stdint.h>
+#include "ext2.h"
 #include "ata.h"
 
 Ext2Superblock *read_superblock() {
