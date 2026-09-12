@@ -1,6 +1,7 @@
 extern "C" {
-#include "interrupts.h"
+#include "bootstrap.h"
 #include "syscalls.h"
+#include "interrupts.h"
 }
 
 #include "bootstrap.h"
