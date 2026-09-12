@@ -13,6 +13,10 @@ typedef struct {
     uint32_t block_size;
     uint32_t blocks_per_group;
     uint32_t inodes_per_group;
+    uint32_t mtime;
+    uint32_t wtime;
+    uint16_t mnt_count;
+    int16_t  max_mnt_count;
     uint16_t magic;
 } __attribute__((packed)) Ext2Superblock;
 
