@@ -15,20 +15,20 @@ COMMON = -m32 \
          -Wall \
          -Wextra
 
-CFLAGS   = $(COMMON) -std=gnu11
-CXXFLAGS = $(COMMON) -std=gnu++17 \
+CFLAGS = $(COMMON) -std=gnu11
+
+CXXFLAGS = $(COMMON) \
+           -std=gnu++17 \
            -fno-exceptions \
            -fno-rtti \
            -fno-use-cxa-atexit
 
 NASMFLAGS = -f elf32
-GASFLAGS  = -m32 -ffreestanding -fno-pie -fno-pic
 
 LDFLAGS = -m elf_i386 -T linker.ld
 
 OBJS = \
 	build/kernel_entry.o \
-	build/syscall_stub.o \
 	build/main.o \
 	build/bootstrap.o \
 	build/utils.o \
@@ -47,13 +47,8 @@ kernel.bin: $(OBJS) linker.ld
 build:
 	mkdir -p build
 
-# Your kernel.s is NASM syntax
 build/kernel_entry.o: arch/x86/boot/kernel.s | build
 	$(AS) $(NASMFLAGS) $< -o $@
-
-# Keep this with GCC if syscall.s is still GNU/GAS syntax
-build/syscall_stub.o: arch/x86/boot/syscall.s | build
-	$(CC) $(GASFLAGS) -c $< -o $@
 
 build/main.o: kernel/main.c kernel/bootstrap.h | build
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
