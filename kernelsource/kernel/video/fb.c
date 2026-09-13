@@ -25,12 +25,19 @@ void draw_pixel(uint32_t x, uint32_t y, uint32_t color)
 
 static void draw_char(char c, uint32_t x, uint32_t y, uint32_t color)
 {
-    const unsigned char *glyph = font_8x8[(unsigned char)c];
+    unsigned char ch = (unsigned char)c;
+
+    if (ch < 32 || ch > 122)
+        ch = '?';
+
+    const unsigned char *glyph = font_8x8[ch - 32];
 
     for (uint32_t row = 0; row < 8; row++) {
         for (uint32_t col = 0; col < 8; col++) {
-            if (glyph[row] & (1u << (7u - col)))
+
+            if (glyph[row] & (1u << col)) {
                 draw_pixel(x + col, y + row, color);
+            }
         }
     }
 }
