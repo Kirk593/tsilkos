@@ -4,22 +4,21 @@ section .multiboot
 align 8
 
 mb2_header:
-    ; Fixed Multiboot2 header
-    dd 0xE85250D6                         ; magic
-    dd 0                                  ; architecture = i386
-    dd mb2_header_end - mb2_header        ; header length
+    dd 0xE85250D6
+    dd 0
+    dd mb2_header_end - mb2_header
     dd -(0xE85250D6 + 0 + (mb2_header_end - mb2_header))
 
-    ; Request a framebuffer
+    ; Preferred framebuffer: 1024x768x32
     align 8
-    dw 5              ; framebuffer header tag
-    dw 0              ; flags
-    dd 20             ; tag size
-    dd 1024           ; width
-    dd 768            ; height
-    dd 32             ; bits per pixel
+    dw 5
+    dw 1              ; optional framebuffer request
+    dd 20
+    dd 1024
+    dd 768
+    dd 32
 
-    ; Required end tag
+    ; End tag
     align 8
     dw 0
     dw 0
@@ -37,12 +36,11 @@ _start:
 
     mov esp, stack_top
 
-    ; Multiboot2 gives:
     ; EAX = 0x36D76289
-    ; EBX = pointer to Multiboot2 information
-
+    ; EBX = Multiboot2 info pointer
     push ebx
     push eax
+
     call kernel_main
 
 .hang:
