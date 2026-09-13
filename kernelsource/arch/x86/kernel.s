@@ -9,14 +9,14 @@ mb2_header:
     dd mb2_header_end - mb2_header
     dd -(0xE85250D6 + 0 + (mb2_header_end - mb2_header))
 
-    ; Preferred framebuffer size: 1024x768x32
+    ; Ask GRUB for any framebuffer it can provide
     align 8
     dw 5
-    dw 1              ; optional framebuffer request may need it
+    dw 1
     dd 20
-    dd 1024
-    dd 768
-    dd 32
+    dd 0
+    dd 0
+    dd 0
 
     ; End tag
     align 8
@@ -36,6 +36,7 @@ _start:
 
     mov esp, stack_top
 
+    ; Multiboot2:
     ; EAX = 0x36D76289
     ; EBX = Multiboot2 info pointer
     push ebx
