@@ -39,6 +39,7 @@ OBJS = \
 	build/ata.o \
 	build/ext2.o \
  build/syscall_stub.o \
+ build/boot.o \
 
 all: kernel.bin
 
@@ -79,6 +80,9 @@ build/ata.o: kernel/fs/ata.c | build
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 build/ext2.o: kernel/fs/ext2.c | build
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+
+build/boot.o: kernel/boot.c kernel/boot.h | build
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 clean:
