@@ -9,10 +9,10 @@ mb2_header:
     dd mb2_header_end - mb2_header
     dd -(0xE85250D6 + 0 + (mb2_header_end - mb2_header))
 
-    ; Preferred framebuffer: 1024x768x32
+    ; Preferred framebuffer size: 1024x768x32
     align 8
     dw 5
-    dw 1              ; optional framebuffer request
+    dw 1              ; optional framebuffer request may need it
     dd 20
     dd 1024
     dd 768
