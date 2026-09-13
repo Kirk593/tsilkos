@@ -48,7 +48,7 @@ kernel.bin: $(OBJS) linker.ld
 build:
 	mkdir -p build
 
-build/kernel_entry.o: arch/x86/boot/kernel.s | build
+build/kernel_entry.o: arch/x86/kernel.s | build
 	$(AS) $(NASMFLAGS) $< -o $@
 
 build/syscall_stub.o: arch/x86/boot/syscall_stub.s | build
