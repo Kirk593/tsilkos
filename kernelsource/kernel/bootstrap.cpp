@@ -38,7 +38,7 @@ static void bootstrapSyscalls(void)
 
 static void bootstrapDevices(void)
 {
-    /* PCI/AHCI/NVMe discovery can be wired in here later. */
+
 }
 
 static void bootstrapFilesystem(void)
