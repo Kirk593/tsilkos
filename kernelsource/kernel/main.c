@@ -172,7 +172,7 @@ void kernel_main(
     if (framebuffer_ready) {
 
         draw_string(
-            "TsilkOS kernel booting!",
+            "TsilkOS booting!",
             100, 100, 0xFFFFFFu
         );
 
